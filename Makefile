@@ -1,6 +1,6 @@
 ROOT_DIR    = $(shell pwd)
 NAMESPACE   = "default"
-DEPLOY_NAME = "devops-super"
-DOCKER_NAME = "devops-super"
+DEPLOY_NAME = "zze-admin-go"
+DOCKER_NAME = "zze-admin-go"
 
 include ./hack/hack.mk
