@@ -20,5 +20,5 @@ type User struct {
 	Enabled   bool        `json:"enabled"   description:"是否启用状态"`  // 是否启用状态
 	RoleIds   *gjson.Json `json:"roleIds"   description:"角色 id"`   // 角色 id
 	DeptId    int         `json:"deptId"    description:"所属部门 id"` // 所属部门 id
-	CreatedAt *gtime.Time `json:"createdAt" description:"创建时间"`    // 创建时间
+	UpdatedAt *gtime.Time `json:"updatedAt" description:"更新时间"`    // 更新时间
 }

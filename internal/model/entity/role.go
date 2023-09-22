@@ -15,5 +15,5 @@ type Role struct {
 	Name       string      `json:"name"       description:"角色名称"` // 角色名称
 	Code       string      `json:"code"       description:"角色代码"` // 角色代码
 	Permission *gjson.Json `json:"permission" description:"关联权限"` // 关联权限
-	CreatedAt  *gtime.Time `json:"createdAt"  description:"创建时间"` // 创建时间
+	UpdatedAt  *gtime.Time `json:"updatedAt"  description:"更新时间"` // 更新时间
 }

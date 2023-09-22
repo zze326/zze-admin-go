@@ -29,7 +29,7 @@ type UserColumns struct {
 	Enabled   string // 是否启用状态
 	RoleIds   string // 角色 id
 	DeptId    string // 所属部门 id
-	CreatedAt string // 创建时间
+	UpdatedAt string // 更新时间
 }
 
 // userColumns holds the columns for table user.
@@ -43,7 +43,7 @@ var userColumns = UserColumns{
 	Enabled:   "enabled",
 	RoleIds:   "role_ids",
 	DeptId:    "dept_id",
-	CreatedAt: "created_at",
+	UpdatedAt: "updated_at",
 }
 
 // NewUserDao creates and returns a new DAO object for table data access.

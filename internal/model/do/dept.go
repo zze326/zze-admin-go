@@ -16,5 +16,5 @@ type Dept struct {
 	Name      interface{} // 部门名称
 	Rank      interface{} // 排序
 	ParentId  interface{} // 上级部门 id
-	CreatedAt *gtime.Time // 创建时间
+	UpdatedAt *gtime.Time // 更新时间
 }

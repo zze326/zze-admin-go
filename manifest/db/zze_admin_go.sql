@@ -9,23 +9,23 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `dept`;
 CREATE TABLE `dept` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(64) NOT NULL COMMENT '部门名称',
-  `rank` int(11) NOT NULL COMMENT '排序',
-  `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT '上级部门 id',
-  `created_at` datetime NOT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`)
+                        `id` int(11) NOT NULL AUTO_INCREMENT,
+                        `name` varchar(64) NOT NULL COMMENT '部门名称',
+                        `rank` int(11) NOT NULL COMMENT '排序',
+                        `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT '上级部门 id',
+                        `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                        PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of dept
 -- ----------------------------
 BEGIN;
-INSERT INTO `dept` (`id`, `name`, `rank`, `parent_id`, `created_at`) VALUES (1, '深圳总公司', 0, 0, '2023-09-22 13:43:26');
-INSERT INTO `dept` (`id`, `name`, `rank`, `parent_id`, `created_at`) VALUES (2, '研发部', 1, 1, '2023-09-22 13:52:25');
-INSERT INTO `dept` (`id`, `name`, `rank`, `parent_id`, `created_at`) VALUES (3, '开发部', 1, 2, '2023-09-22 13:52:36');
-INSERT INTO `dept` (`id`, `name`, `rank`, `parent_id`, `created_at`) VALUES (4, '运维部', 2, 2, '2023-09-22 13:52:41');
-INSERT INTO `dept` (`id`, `name`, `rank`, `parent_id`, `created_at`) VALUES (5, '运营部', 2, 1, '2023-09-22 13:52:57');
+INSERT INTO `dept` (`id`, `name`, `rank`, `parent_id`, `updated_at`) VALUES (1, '深圳总公司', 0, 0, '2023-09-22 13:43:26');
+INSERT INTO `dept` (`id`, `name`, `rank`, `parent_id`, `updated_at`) VALUES (2, '研发部', 1, 1, '2023-09-22 13:52:25');
+INSERT INTO `dept` (`id`, `name`, `rank`, `parent_id`, `updated_at`) VALUES (3, '开发部', 1, 2, '2023-09-22 13:52:36');
+INSERT INTO `dept` (`id`, `name`, `rank`, `parent_id`, `updated_at`) VALUES (4, '运维部', 2, 2, '2023-09-22 13:52:41');
+INSERT INTO `dept` (`id`, `name`, `rank`, `parent_id`, `updated_at`) VALUES (5, '运营部', 2, 1, '2023-09-22 13:52:57');
 COMMIT;
 
 -- ----------------------------
@@ -33,20 +33,20 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `permission`;
 CREATE TABLE `permission` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(64) NOT NULL COMMENT '标题',
-  `name` varchar(64) NOT NULL COMMENT '路由名称',
-  `type` tinyint(4) NOT NULL COMMENT '类型:1-目录,2-菜单,3-功能',
-  `f_route` varchar(64) DEFAULT NULL COMMENT '前端路由路径',
-  `b_routes` json DEFAULT NULL COMMENT '后端路由路径',
-  `redirect` varchar(64) DEFAULT NULL COMMENT '重定向路径',
-  `icon` varchar(32) DEFAULT NULL COMMENT '图标',
-  `rank` int(11) DEFAULT NULL COMMENT '排序',
-  `show_link` bit(1) NOT NULL COMMENT '是否在菜单中展示',
-  `show_parent` bit(1) NOT NULL COMMENT '是否展示父级菜单',
-  `keep_alive` bit(1) NOT NULL COMMENT '页面缓存',
-  `parent_id` int(11) NOT NULL COMMENT '父级权限 id',
-  PRIMARY KEY (`id`)
+                              `id` int(11) NOT NULL AUTO_INCREMENT,
+                              `title` varchar(64) NOT NULL COMMENT '标题',
+                              `name` varchar(64) NOT NULL COMMENT '路由名称',
+                              `type` tinyint(4) NOT NULL COMMENT '类型:1-目录,2-菜单,3-功能',
+                              `f_route` varchar(64) DEFAULT NULL COMMENT '前端路由路径',
+                              `b_routes` json DEFAULT NULL COMMENT '后端路由路径',
+                              `redirect` varchar(64) DEFAULT NULL COMMENT '重定向路径',
+                              `icon` varchar(32) DEFAULT NULL COMMENT '图标',
+                              `rank` int(11) DEFAULT NULL COMMENT '排序',
+                              `show_link` bit(1) NOT NULL COMMENT '是否在菜单中展示',
+                              `show_parent` bit(1) NOT NULL COMMENT '是否展示父级菜单',
+                              `keep_alive` bit(1) NOT NULL COMMENT '页面缓存',
+                              `parent_id` int(11) NOT NULL COMMENT '父级权限 id',
+                              PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
@@ -86,20 +86,20 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(128) NOT NULL COMMENT '角色名称',
-  `code` varchar(30) NOT NULL COMMENT '角色代码',
-  `permission` json DEFAULT NULL COMMENT '关联权限',
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  PRIMARY KEY (`id`)
+                        `id` int(11) NOT NULL AUTO_INCREMENT,
+                        `name` varchar(128) NOT NULL COMMENT '角色名称',
+                        `code` varchar(30) NOT NULL COMMENT '角色代码',
+                        `permission` json DEFAULT NULL COMMENT '关联权限',
+                        `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                        PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of role
 -- ----------------------------
 BEGIN;
-INSERT INTO `role` (`id`, `name`, `code`, `permission`, `created_at`) VALUES (1, '管理员', 'admin', '[25, 1, 3, 11, 4, 6, 10, 8, 9, 5, 20, 21, 22, 23, 24, 2, 14, 15, 16, 17, 18]', '2023-09-22 11:06:46');
-INSERT INTO `role` (`id`, `name`, `code`, `permission`, `created_at`) VALUES (2, '测试', 'test', '[25, 11, 5, 20, 21, 22, 23, 24, 16]', '2023-09-22 11:06:46');
+INSERT INTO `role` (`id`, `name`, `code`, `permission`, `updated_at`) VALUES (1, '管理员', 'admin', '[25, 1, 3, 11, 4, 6, 10, 8, 9, 5, 20, 21, 22, 23, 24, 2, 14, 15, 16, 17, 18]', '2023-09-22 11:06:46');
+INSERT INTO `role` (`id`, `name`, `code`, `permission`, `updated_at`) VALUES (2, '测试', 'test', '[25, 11, 5, 20, 21, 22, 23, 24, 16]', '2023-09-22 11:06:46');
 COMMIT;
 
 -- ----------------------------
@@ -107,25 +107,26 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(128) NOT NULL COMMENT '用户名',
-  `password` varchar(128) NOT NULL COMMENT '密码',
-  `phone` varchar(128) DEFAULT NULL COMMENT '手机号码',
-  `email` varchar(128) DEFAULT NULL COMMENT '邮箱',
-  `real_name` varchar(128) DEFAULT NULL COMMENT '真实姓名',
-  `enabled` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否启用状态',
-  `role_ids` json DEFAULT NULL COMMENT '角色 id',
-  `dept_id` int(11) NOT NULL COMMENT '所属部门 id',
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  PRIMARY KEY (`id`)
+                        `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                        `username` varchar(128) NOT NULL COMMENT '用户名',
+                        `password` varchar(128) NOT NULL COMMENT '密码',
+                        `phone` varchar(128) DEFAULT NULL COMMENT '手机号码',
+                        `email` varchar(128) DEFAULT NULL COMMENT '邮箱',
+                        `real_name` varchar(128) DEFAULT NULL COMMENT '真实姓名',
+                        `enabled` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否启用状态',
+                        `role_ids` json DEFAULT NULL COMMENT '角色 id',
+                        `dept_id` int(11) NOT NULL COMMENT '所属部门 id',
+                        `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                        PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` (`id`, `username`, `password`, `phone`, `email`, `real_name`, `enabled`, `role_ids`, `dept_id`, `created_at`) VALUES (1, 'admin', '$2a$10$4R/ujw20O63gNwBTS0vJmOfAUukGT5pCMll0gsqy6IALPHZC7SDv2', '16666666666', '632404164@qq.com', '管理员', b'1', '[1]', 1, '2023-09-22 11:08:34');
-INSERT INTO `user` (`id`, `username`, `password`, `phone`, `email`, `real_name`, `enabled`, `role_ids`, `dept_id`, `created_at`) VALUES (2, 'test', '$2a$10$aEX83iCGh/JrxiTImN0PE.0bK/dLE1lFFeZ4ssHdK4/rrXCqMgRHe', '16666666666', '632404164@qq.com', '测试用户', b'1', '[2]', 4, '2023-09-22 11:08:34');
+INSERT INTO `user` (`id`, `username`, `password`, `phone`, `email`, `real_name`, `enabled`, `role_ids`, `dept_id`, `updated_at`) VALUES (1, 'admin', '$2a$10$4R/ujw20O63gNwBTS0vJmOfAUukGT5pCMll0gsqy6IALPHZC7SDv2', '16666666666', '632404164@qq.com', '管理员', b'1', '[1]', 1, '2023-09-22 16:45:33');
+INSERT INTO `user` (`id`, `username`, `password`, `phone`, `email`, `real_name`, `enabled`, `role_ids`, `dept_id`, `updated_at`) VALUES (2, 'test', '$2a$10$aEX83iCGh/JrxiTImN0PE.0bK/dLE1lFFeZ4ssHdK4/rrXCqMgRHe', '16666666666', '632404164@qq.com', '测试用户', b'1', '[2]', 4, '2023-09-22 16:45:50');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
+

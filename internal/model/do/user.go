@@ -22,5 +22,5 @@ type User struct {
 	Enabled   interface{} // 是否启用状态
 	RoleIds   *gjson.Json // 角色 id
 	DeptId    interface{} // 所属部门 id
-	CreatedAt *gtime.Time // 创建时间
+	UpdatedAt *gtime.Time // 更新时间
 }

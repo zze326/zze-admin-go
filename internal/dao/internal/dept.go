@@ -24,7 +24,7 @@ type DeptColumns struct {
 	Name      string // 部门名称
 	Rank      string // 排序
 	ParentId  string // 上级部门 id
-	CreatedAt string // 创建时间
+	UpdatedAt string // 更新时间
 }
 
 // deptColumns holds the columns for table dept.
@@ -33,7 +33,7 @@ var deptColumns = DeptColumns{
 	Name:      "name",
 	Rank:      "rank",
 	ParentId:  "parent_id",
-	CreatedAt: "created_at",
+	UpdatedAt: "updated_at",
 }
 
 // NewDeptDao creates and returns a new DAO object for table data access.

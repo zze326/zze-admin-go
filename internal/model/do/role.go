@@ -17,5 +17,5 @@ type Role struct {
 	Name       interface{} // 角色名称
 	Code       interface{} // 角色代码
 	Permission *gjson.Json // 关联权限
-	CreatedAt  *gtime.Time // 创建时间
+	UpdatedAt  *gtime.Time // 更新时间
 }
