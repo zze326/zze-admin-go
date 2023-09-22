@@ -10,6 +10,7 @@ import (
 	"devops-super/internal/service"
 	"github.com/gogf/gf/v2/encoding/gjson"
 	"github.com/gogf/gf/v2/errors/gerror"
+	"github.com/gogf/gf/v2/os/gtime"
 	"github.com/gogf/gf/v2/util/gutil"
 )
 
@@ -33,6 +34,7 @@ func (*sRole) Add(ctx context.Context, in *entity.Role) (err error) {
 	if r != nil {
 		return gerror.New("已存在该代码的权限")
 	}
+	in.CreatedAt = gtime.Now()
 	_, err = dao.Role.Ctx(ctx).Insert(in)
 	return
 }

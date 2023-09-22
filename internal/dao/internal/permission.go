@@ -31,8 +31,8 @@ type PermissionColumns struct {
 	Rank       string // 排序
 	ShowLink   string // 是否在菜单中展示
 	ShowParent string // 是否展示父级菜单
-	ParentId   string // 父级权限 id
 	KeepAlive  string // 页面缓存
+	ParentId   string // 父级权限 id
 }
 
 // permissionColumns holds the columns for table permission.
@@ -48,8 +48,8 @@ var permissionColumns = PermissionColumns{
 	Rank:       "rank",
 	ShowLink:   "show_link",
 	ShowParent: "show_parent",
-	ParentId:   "parent_id",
 	KeepAlive:  "keep_alive",
+	ParentId:   "parent_id",
 }
 
 // NewPermissionDao creates and returns a new DAO object for table data access.

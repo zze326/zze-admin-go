@@ -21,6 +21,6 @@ type Permission struct {
 	Rank       int         `json:"rank"       description:"排序"`                // 排序
 	ShowLink   bool        `json:"showLink"   description:"是否在菜单中展示"`          // 是否在菜单中展示
 	ShowParent bool        `json:"showParent" description:"是否展示父级菜单"`          // 是否展示父级菜单
-	ParentId   int         `json:"parentId"   description:"父级权限 id"`           // 父级权限 id
 	KeepAlive  bool        `json:"keepAlive"  description:"页面缓存"`              // 页面缓存
+	ParentId   int         `json:"parentId"   description:"父级权限 id"`           // 父级权限 id
 }

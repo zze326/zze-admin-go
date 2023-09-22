@@ -23,6 +23,6 @@ type Permission struct {
 	Rank       interface{} // 排序
 	ShowLink   interface{} // 是否在菜单中展示
 	ShowParent interface{} // 是否展示父级菜单
-	ParentId   interface{} // 父级权限 id
 	KeepAlive  interface{} // 页面缓存
+	ParentId   interface{} // 父级权限 id
 }

@@ -9,6 +9,7 @@ import (
 	"devops-super/internal/model/entity/comb"
 	"devops-super/internal/service"
 	"devops-super/utility/util"
+	"github.com/gogf/gf/v2/os/gtime"
 	"github.com/gogf/gf/v2/util/gutil"
 )
 
@@ -29,6 +30,7 @@ func (*sUser) Add(ctx context.Context, in *entity.User) (err error) {
 	if err != nil {
 		return
 	}
+	in.CreatedAt = gtime.Now()
 	_, err = dao.User.Ctx(ctx).Insert(in)
 	return
 }
