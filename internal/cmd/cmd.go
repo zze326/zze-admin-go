@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"devops-super/internal/controller/dept"
 	"devops-super/internal/controller/permission"
 	"devops-super/internal/controller/public"
 	"devops-super/internal/controller/role"
@@ -34,6 +35,7 @@ var (
 						user.NewV1(),
 						permission.NewV1(),
 						role.NewV1(),
+						dept.NewV1(),
 					)
 				})
 			})

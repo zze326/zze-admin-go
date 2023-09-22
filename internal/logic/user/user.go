@@ -9,7 +9,6 @@ import (
 	"devops-super/internal/model/entity/comb"
 	"devops-super/internal/service"
 	"devops-super/utility/util"
-	"github.com/gogf/gf/v2/os/gtime"
 	"github.com/gogf/gf/v2/util/gutil"
 )
 
@@ -30,7 +29,6 @@ func (*sUser) Add(ctx context.Context, in *entity.User) (err error) {
 	if err != nil {
 		return
 	}
-	in.CreatedAt = gtime.Now()
 	_, err = dao.User.Ctx(ctx).Insert(in)
 	return
 }
@@ -57,6 +55,10 @@ func (*sUser) GetPageLst(ctx context.Context, in *api.PageLstReq) (out *api.Page
 		m = m.Where(cols.Enabled, enabled.Bool())
 	}
 
+	if deptId := in.Wheres.Get("deptId"); !deptId.IsNil() {
+		m = m.Where(cols.DeptId, deptId.Int())
+	}
+
 	err = m.Offset(in.Offset()).Limit(in.Limit()).FieldsEx(cols.Password).
 		ScanAndCount(&out.List, &out.Total, false)
 	return
@@ -71,7 +73,7 @@ func (*sUser) GetComb(ctx context.Context, userDo *do.User) (out *comb.User, err
 	if err = dao.User.Ctx(ctx).Where(userDo).OmitNilWhere().Limit(1).Scan(&out); err != nil {
 		return
 	}
-	if err = dao.Role.Ctx(ctx).WhereIn(dao.Role.Columns().Id, out.Role.Array()).Scan(&out.Roles); err != nil {
+	if err = dao.Role.Ctx(ctx).WhereIn(dao.Role.Columns().Id, out.RoleIds.Array()).Scan(&out.Roles); err != nil {
 		return
 	}
 	return
@@ -83,7 +85,7 @@ func (*sUser) GetCombLst(ctx context.Context) (out []*comb.User, err error) {
 	}
 
 	for _, user := range out {
-		if err = dao.Role.Ctx(ctx).WhereIn(dao.Role.Columns().Id, user.Role.Array()).Scan(&user.Roles); err != nil {
+		if err = dao.Role.Ctx(ctx).WhereIn(dao.Role.Columns().Id, user.RoleIds.Array()).Scan(&user.Roles); err != nil {
 			return
 		}
 	}

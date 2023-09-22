@@ -10,7 +10,7 @@ gfcli:
     dao:
       - link: "mysql:devops_super:devops_super.zze@tcp(192.168.2.231:3306)/devops_super"
         group: default
-        tables: "user, permission, role"
+        tables: "user, permission, role, dept"
         withTime: false
         gJsonSupport: true
         overwriteDao: true

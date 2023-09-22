@@ -20,6 +20,7 @@ type User struct {
 	Email     interface{} // 邮箱
 	RealName  interface{} // 真实姓名
 	Enabled   interface{} // 是否启用状态
-	Role      *gjson.Json // 角色 id
+	RoleIds   *gjson.Json // 角色 id
+	DeptId    interface{} // 所属部门 id
 	CreatedAt *gtime.Time // 创建时间
 }

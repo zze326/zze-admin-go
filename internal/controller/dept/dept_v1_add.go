@@ -1,4 +1,4 @@
-package role
+package dept
 
 import (
 	"context"
@@ -7,16 +7,16 @@ import (
 	"github.com/gogf/gf/v2/os/gtime"
 	"github.com/gogf/gf/v2/util/gconv"
 
-	"devops-super/api/role/v1"
+	"devops-super/api/dept/v1"
 )
 
 func (c *ControllerV1) Add(ctx context.Context, req *v1.AddReq) (res *v1.AddRes, err error) {
-	in := new(entity.Role)
+	in := new(entity.Dept)
 	if err = gconv.Struct(req, in); err != nil {
 		return
 	}
 
 	in.CreatedAt = gtime.Now()
-	err = service.Role().Add(ctx, in)
+	err = service.Dept().Add(ctx, in)
 	return
 }
