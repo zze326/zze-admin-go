@@ -21,6 +21,7 @@
 ![用户管理](https://raw.githubusercontent.com/zze326/zze-admin-go/main/resource/imgs/user-manage.png)
 ![角色管理](https://raw.githubusercontent.com/zze326/zze-admin-go/main/resource/imgs/role-manage.png)
 ![权限管理](https://raw.githubusercontent.com/zze326/zze-admin-go/main/resource/imgs/permission-manage.png)
+![部门管理](https://raw.githubusercontent.com/zze326/zze-admin-go/main/resource/imgs/dept-manage.png)
 
 ## 技术栈
 
