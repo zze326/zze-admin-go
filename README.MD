@@ -12,9 +12,12 @@
 ## 预览地址
 
 [点我预览](http://admin.zze.xyz)
+> 数据库每小时自动重置，可随意测试。
 
 - 管理员：`admin`，密码：`devops.zze`；
 - 测试账号：`test`，密码：`devops.zze`；
+
+
 
 效果图：
 
